@@ -1,0 +1,17 @@
+# Dependências
+node_modules/
+
+# Build de produção
+build/
+
+# Variáveis de ambiente (o .env.example é versionado)
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Logs do npm
+npm-debug.log*
+
+# Sistema
+.DS_Store
