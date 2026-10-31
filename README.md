@@ -29,37 +29,6 @@ Em Belém, a coleta de lixo segue rotas fixas, sem saber se a lixeira está chei
 
 **Hardware:** ESP32, HX711, célula de carga, sensor ultrassônico e MPU6050.
 
-## Estrutura do banco
-
-```
-lixeira/
-  historico/
-    AAAA-MM-DD/
-      <timestamp>/
-        hora
-        peso
-  status/
-    cheia
-    distanciaCm
-```
-
-## Como rodar
-
-1. Entre na pasta do painel:
-
-   ```bash
-   cd dashboard
-   ```
-
-2. Copie o arquivo `.env.example` para `.env.local` e preencha com os dados do seu próprio projeto Firebase.
-
-3. Instale as dependências e inicie o painel:
-
-   ```bash
-   npm install
-   npm start
-   ```
-
 ## Origem e equipe
 
 O TekoLixeira foi criado em conjunto por uma única equipe no Amazon Hacking 2025, programa de extensão do CESUPA, e foi exposto em um estande na COP 30, na Estação das Docas, em Belém.
