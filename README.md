@@ -2,6 +2,8 @@
 
 Lixeira inteligente com IoT para monitorar o descarte de resíduos, apresentada na COP 30, em Belém.
 
+![Tekinho, o mascote da Teko Lixeira, ao lado do logo](docs/teko-lixeira-apresentacao.png)
+
 <!-- IMAGEM DO PAINEL: salve a imagem em docs/ e troque este comentário por ![Painel da Teko Lixeira](docs/NOME-DA-IMAGEM.png) -->
 
 ## O problema
