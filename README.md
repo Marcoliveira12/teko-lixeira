@@ -25,7 +25,7 @@ A Teko Lixeira é uma lixeira inteligente que monitora o peso e o nível do lixo
 
 - Gráfico do peso por hora do dia.
 - Totais do mês atual e do mês anterior, com comparação entre os dois.
-- Status de lotação da lixeira ligado ao sensor ultrassônico, com a distância medida em centímetros.
+- Status de lotação da lixeira ligado ao sensor ultrassônico, com a porcentagem de enchimento e o estado da bateria.
 - Mapa com a localização da lixeira.
 - Tema claro e escuro.
 

@@ -59,10 +59,6 @@ function LineChart({ data, theme = 'light' }) {
       curve: 'smooth',
       colors: ['#0A8754']
     },
-    title: {
-      text: 'Peso do Lixo por Hora', // Updated title
-      align: 'left'
-    },
     tooltip: {
       enabled: true, // Ensure tooltips are enabled
       shared: false, // Important: Set to false for better control with discrete X-axis

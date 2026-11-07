@@ -46,3 +46,64 @@ export function somaColetadaNoDia(entradasDoDia) {
 export function ehChaveDeData(chave) {
   return /^\d{4}-\d{2}-\d{2}$/.test(chave);
 }
+
+// --- Bateria ---
+
+// Procura a medição mais recente que tenha bateriaNivel, em todos os dias do historico
+export function acharUltimaLeitura(dias) {
+  let ultima = null;
+  if (dias && typeof dias === 'object') {
+    const chavesDias = Object.keys(dias);
+    for (let i = 0; i < chavesDias.length; i++) {
+      const chaveDia = chavesDias[i];
+      const entradasDoDia = dias[chaveDia];
+      if (ehChaveDeData(chaveDia) && entradasDoDia && typeof entradasDoDia === 'object') {
+        const chavesEpoch = Object.keys(entradasDoDia);
+        for (let j = 0; j < chavesEpoch.length; j++) {
+          const epoch = Number(chavesEpoch[j]);
+          const entrada = entradasDoDia[chavesEpoch[j]];
+          if (!isNaN(epoch) && entrada && entrada.bateriaNivel !== undefined && entrada.bateriaNivel !== null) {
+            if (ultima === null || epoch > ultima.epoch) {
+              ultima = { nivel: entrada.bateriaNivel, epoch: epoch };
+            }
+          }
+        }
+      }
+    }
+  }
+  return ultima;
+}
+
+// Traduz o nível que o ESP manda para o texto do painel
+export function nomeBateria(nivel) {
+  let nome = 'Sem leitura';
+  if (typeof nivel === 'string') {
+    const nivelMinusculo = nivel.toLowerCase();
+    if (nivelMinusculo === 'excelente') {
+      nome = 'Excelente';
+    } else if (nivelMinusculo === 'bom') {
+      nome = 'Boa';
+    } else if (nivelMinusculo === 'baixa') {
+      nome = 'Baixa';
+    } else if (nivelMinusculo === 'carregar') {
+      nome = 'Carregar';
+    }
+  }
+  return nome;
+}
+
+// --- Permissão do Firebase ---
+
+// Confere se o Firebase recusou a leitura por causa das regras do banco
+export function ehErroDePermissao(err) {
+  let semPermissao = false;
+  if (err) {
+    if (err.code === 'PERMISSION_DENIED') {
+      semPermissao = true;
+    }
+    if (typeof err.message === 'string' && err.message.toLowerCase().indexOf('permission_denied') !== -1) {
+      semPermissao = true;
+    }
+  }
+  return semPermissao;
+}
